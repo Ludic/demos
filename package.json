@@ -1,0 +1,30 @@
+{
+  "name": "ludic-demos",
+  "version": "1.0.0",
+  "description": "demos for the ludic game engine",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --no-info --colors --progress --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ludic",
+    "ludic-demos"
+  ],
+  "author": "Derek Arner",
+  "license": "ISC",
+  "dependencies": {
+    "Ludic": "github:softwaresyndicate/Ludic#dev",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "css-loader": "^0.25.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2"
+  }
+}

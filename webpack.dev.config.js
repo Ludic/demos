@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 
+console.log("Webpack Dev Config");
 
 module.exports = {
     entry: ["babel-polyfill","./src/main.js"],
@@ -20,6 +21,7 @@ module.exports = {
                 // path.resolve(__dirname,"node_modules/Ludic"),
                 fs.realpathSync(__dirname + '/src'),
                 fs.realpathSync(__dirname + '/node_modules/Ludic'),
+                fs.realpathSync(__dirname + '/node_modules/Ludic/node_modules/mixwith/src'),
                 fs.realpathSync(__dirname + '/node_modules/ein'),
               ],
               loader: "babel-loader"
@@ -35,7 +37,7 @@ module.exports = {
       alias: {
         src: 'src',
         demos: 'src/demos',
-        mixwith: 'src/mixwith.js'
+        mixwith: 'node_modules/Ludic/node_modules/mixwith/src/mixwith.js'
       },
       extensions: ['', '.js', '.scss', '.json'],
       // modulesDirectories: [path.resolve('./node_modules')]

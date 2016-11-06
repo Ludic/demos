@@ -1,56 +1,20 @@
-import {Ludic, App, Camera} from 'Ludic'
+import {LudicApp, Camera} from 'Ludic'
+import DemoSelectorScreen from 'demos/DemoSelectorScreen'
 
-//Config Ludic?
-Ludic.devmode = true;
-
-var config = {
-  canvas: {
-    fullscreen: true
-  },
-  camera: {
-    fps: false,
-    extras: {
-      axes: true,
-      grid: false
-    },
-    ptm: 25
-  },
-  world: {
-    gravity: {
-      x: 0,
-      y: -10
-    },
-    drawDebug: true
-  },
-  input: {
-    logAllKeys:false,
-    logUnmappedKeys:true,
-  }
-};
-
-export default class Senso extends App {
+export default class LudicDemosApp extends LudicApp {
   constructor(config){
     super(config);
 
-    this.camera = new Camera(Ludic.canvas);
-    this.camera.centerWorldToCanvas();
+    // this.screenListener = Ludic.screenManager.newListener(true);
+    this.demoSelectorScreen = new DemoSelectorScreen();
+    // add the DemoSelectorScreen to the ScreenManager.
+    Ludic.screenManager.addScreen(this.demoSelectorScreen);
   }
 
   update(delta){
-
-    Ludic.context.fillStyle = 'white';
-    Ludic.context.clearRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
-    Ludic.context.fillRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
-
-    this.camera.update(delta);
-
-    Ludic.context.save();
-    Ludic.context.fillStyle = 'black';
-    Ludic.context.fillRect(0,0,10,10);
-    Ludic.context.restore();
+    // add the screen manager to the update loop. all arguments are applied to
+    //  the active screen's update method, so passing the context (optional)
+    //  ensures each screen will have the drawing context on update.
+    Ludic.screenManager.update(delta, Ludic.context);
   }
 }
-
-
-var app = new Senso(config);
-app.run();

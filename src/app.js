@@ -1,4 +1,4 @@
-import {LudicApp, Camera} from 'Ludic'
+import {LudicApp, Camera, Ludic} from 'Ludic'
 import DemoSelectorScreen from 'demos/DemoSelectorScreen'
 
 export default class LudicDemosApp extends LudicApp {

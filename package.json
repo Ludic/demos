@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "Ludic": "github:softwaresyndicate/Ludic#dev",
-    "ein": "github:ludic/ein",
+    "ein": "github:ludic/ein"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

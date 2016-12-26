@@ -14,17 +14,19 @@
   "author": "Derek Arner",
   "license": "ISC",
   "dependencies": {
-    "Ludic": "github:softwaresyndicate/Ludic#dev",
-    "ein": "github:ludic/ein"
+    "ludic": "github:ludic/ludic",
+    "ein": "github:ludic/ein",
+    "mixwith": "github:ludic/mixwith"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-1": "^6.16.0",
     "css-loader": "^0.25.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack": "^2.2.0-rc.2",
+    "webpack-dev-server": "^2.2.0-rc.0"
   }
 }

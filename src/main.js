@@ -1,4 +1,4 @@
-import {Ludic, Camera} from 'Ludic'
+import {default as Ludic, Camera} from 'ludic'
 import LudicDemosApp from 'src/app'
 
 //Config Ludic?

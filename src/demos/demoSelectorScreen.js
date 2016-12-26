@@ -1,8 +1,12 @@
-import {Screen, Camera, Ludic, classTypeOf} from 'Ludic'
-import {EntityManager, GenericSystem} from 'ein'
+import {Screen, Camera, Ludic} from 'ludic'
+import * as lud from 'ludic'
+import {EntityManager} from 'ein'
 import Button from 'src/components/button'
-import Clickable from 'src/components/clickable'
-
+// import Clickable from 'src/components/clickable'
+// console.log(Screen, Camera, Ludic);
+// console.log(lud);
+// console.log(EntityManager, GenericSystem);
+// console.log(Button);
 export default class DemoSelectorScreen extends Screen {
   constructor() {
     super();
@@ -25,7 +29,7 @@ export default class DemoSelectorScreen extends Screen {
     // initialize an EntityManager
     this.em = new EntityManager();
 
-    this.clicker = new GenericSystem({});
+    // this.clicker = new GenericSystem({});
 
     // create a button
     this.button = new Button(0,0,10,10);

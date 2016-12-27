@@ -14,8 +14,9 @@
   "author": "Derek Arner",
   "license": "ISC",
   "dependencies": {
-    "ludic": "github:ludic/ludic",
     "ein": "github:ludic/ein",
+    "ludic": "github:ludic/ludic",
+    "ludic-connect": "github:ludic/ludic-connect",
     "mixwith": "github:ludic/mixwith"
   },
   "devDependencies": {

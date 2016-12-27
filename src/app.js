@@ -1,5 +1,6 @@
 import {LudicApp, Camera, Ludic} from 'Ludic'
 import DemoSelectorScreen from 'demos/DemoSelectorScreen'
+import MultiplayerDemoScreen from 'demos/multiplayer/multiplayer'
 
 export default class LudicDemosApp extends LudicApp {
   constructor(config){
@@ -7,8 +8,10 @@ export default class LudicDemosApp extends LudicApp {
 
     // this.screenListener = Ludic.screenManager.newListener(true);
     this.demoSelectorScreen = new DemoSelectorScreen();
+    this.multiplayerDemoScreen = new MultiplayerDemoScreen();
     // add the DemoSelectorScreen to the ScreenManager.
-    Ludic.screenManager.addScreen(this.demoSelectorScreen);
+    /* Ludic.screenManager.addScreen(this.demoSelectorScreen); */
+    Ludic.screenManager.addScreen(this.multiplayerDemoScreen);
   }
 
   update(delta){

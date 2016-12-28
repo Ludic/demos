@@ -3,6 +3,7 @@ import * as lud from 'ludic'
 import {EntityManager} from 'ein'
 import Block from 'src/entities/block'
 import {LudicConnect} from 'ludic-connect'
+window.lc = LudicConnect;
 
 export default class MultiplayerDemoScreen extends Screen {
   constructor() {
@@ -20,7 +21,15 @@ export default class MultiplayerDemoScreen extends Screen {
     // initialize an EntityManager
     this.em = new EntityManager();
 
-    LudicConnect.createLobby("multiplayer lobby");
+    // initialize a Block Entity
+    this.block = new Block(0, 0, 100, 100);
+
+    LudicConnect.onMessage = function(message){
+      let data = JSON.parse(message.data);
+      console.log(data.x);
+      console.log(data.y);
+      this.block.path = Path2D.rect(data.x, data.y, 100, 100);
+    }.bind(this);
   }
 
   update(delta, ctx){
@@ -28,10 +37,14 @@ export default class MultiplayerDemoScreen extends Screen {
     ctx.clearRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
     ctx.fillRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
 
+    this.block.draw(ctx);
+    
     this.camera.update(delta);
   }
 
   onMouseMove(canvasPos, worldPos, event){
-    // console.log(event.region);
+    if(LudicConnect.Host.dc && LudicConnect.Host.dc.readyState === 'open'){
+      LudicConnect.send(JSON.stringify(canvasPos));
+    }
   }
 }

@@ -8,7 +8,6 @@ window.lc = LudicConnect;
 export default class MultiplayerDemoScreen extends Screen {
   constructor() {
     super();
-    console.log(LudicConnect);
     this.camera = new Camera(Ludic.canvas);
     this.camera.centerWorldToCanvas();
 

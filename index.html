@@ -3,8 +3,120 @@
   <head>
     <meta charset="utf-8">
     <title>Ludic Demos</title>
+
+    <style>
+    #lobby-screen {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+    }
+
+    .top {
+      display: flex;
+      flex-basis: 100%;
+    }
+    
+    .button {
+      display: flex;
+      flex-basis: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .button-text {
+      color: white;
+      font-size: 4rem;
+    }
+
+    #create-lobby {
+      background-color: rgb(168,230,207);
+    }
+
+    #create-lobby:hover {
+      background-color: rgba(168,230,207, .5);
+    }
+    
+    #find-lobby {
+      background-color: rgb(255,139,148);
+    }
+
+    #find-lobby:hover {
+      background-color:  rgba(255,139,148, .5);
+    }
+    
+    .bottom {
+      display: flex;
+      flex-basis: 100%;
+      font-size: 2rem;
+    }
+
+    .current-lobby-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-basis: 50%;
+      border: 5px solid rgb(168,230,207);
+    }
+
+
+    .current-lobby {
+      display: flex;
+      flex-basis: 100%;
+      padding: .5rem;
+    }
+
+    .found-lobbies {
+      display: flex;
+      flex-basis: 50%;
+      flex-wrap: wrap;
+      border: 5px solid rgb(255,139,148)
+    }
+
+    .lobby-list {
+      flex-basis: 100%;
+      padding: .5rem;
+    }
+
+    .found-lobby {
+      display: flex;
+      flex-basis: 100%;
+      background-color: rgba(255,170,165, 1);
+      padding: .2rem;
+      margin: .4rem;
+      cursor: pointer;
+    }
+
+    .found-lobby:hover {
+      background-color: rgba(255,170,165, .5);
+    }
+
+    
+    
+    </style>
   </head>
   <body style="margin:0;-webkit-user-select:none;overflow:hidden;">
+    <div id="lobby-screen">
+      <div class="top">
+        <div class="button" id="create-lobby"><span class="button-text">Create Lobby</span></div>
+        <div class="button" id="find-lobby"><span class="button-text">Find Lobby</span></div>
+      </div>
+      <div class="bottom">
+        <div class="current-lobby-container">
+          <span>Current Lobby: &nbsp&nbsp</span><span id="curren-lobby-name">None</span>
+          <div class="current-lobby">
+            
+          </div>
+        </div>
+        <div class="found-lobbies">
+          <span>Found Lobbies</span>
+          <div class="lobby-list" id="lobby-list">
+            
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript" src="bundle.js"></script>
   </body>
 </html>

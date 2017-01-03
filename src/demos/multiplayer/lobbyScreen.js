@@ -30,11 +30,11 @@ export default class LobbyScreen extends Screen {
     this.lobbyList = document.getElementById("lobby-list");
   }
 
-  createLobby(){
+  createLobby(name, type){
     if(!this.creatingLobby){
       this.creatingLobby = true;
       LudicConnect.createLobby("demo-lobby").then(results => {
-        console.log(results);
+        /* console.log(results); */
         this.creatingLobby = false;
       });
     }
@@ -50,7 +50,11 @@ export default class LobbyScreen extends Screen {
 
   joinLobby(e){
     let lobbyId = e.srcElement.id;
-    LudicConnect.joinLobby(lobbyId, this.onLobbyJoined.bind(this));
+    this.lobbies.forEach(lobby => {
+      if(lobby.id === lobbyId){
+        LudicConnect.joinLobby(lobby, this.onLobbyJoined.bind(this));        
+      }
+    });
   }
 
   onLobbyJoined(){

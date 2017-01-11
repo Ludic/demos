@@ -1,9 +1,6 @@
-import Clickable from './clickable'
-import {mix} from 'mixwith'
 
-class Button extends mix().with(Clickable) {
+class Button {
   constructor(x,y,width,height) {
-    super();
     this.path = Path2D.rect(x,y,width,height);
   }
 

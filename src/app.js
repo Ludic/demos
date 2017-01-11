@@ -11,7 +11,7 @@ export default class LudicDemosApp extends LudicApp {
     Ludic.screenManager.addScreen(this.demoSelectorScreen);
   }
 
-  update(delta){
+  update(delta, time){
     // add the screen manager to the update loop. all arguments are applied to
     //  the active screen's update method, so passing the context (optional)
     //  ensures each screen will have the drawing context on update.

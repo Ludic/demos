@@ -1,42 +1,55 @@
-import {Screen, Camera, Ludic} from 'ludic'
-import * as lud from 'ludic'
-import {EntityManager} from 'ein'
-import Button from 'src/components/button'
-// import Clickable from 'src/components/clickable'
-// console.log(Screen, Camera, Ludic);
-// console.log(lud);
-// console.log(EntityManager, GenericSystem);
-// console.log(Button);
+import {Screen, ScreenManager, Camera, Ludic} from 'ludic'
+import {EntityManager, BaseSystem} from 'ein'
+import DemoButton from 'src/components/demoButton'
+
+// demos
+import Demo1 from './demo1'
+import Demo2 from './demo2'
+
 export default class DemoSelectorScreen extends Screen {
   constructor() {
     super();
 
-    this.camera = new Camera(Ludic.canvas);
-    this.camera.centerWorldToCanvas();
+    this.camera = new Camera();
+    this.camera.inverseY = false;
+    // this.camera.centerWorldToCamera();
 
     // create an input listener. passing `true` automatically adds
     //  the listener to the controller.
-    this.inputListener = Ludic.input.newInputListener({
-
+    this.clickListener = Ludic.input.newInputListener({
+      binder: this,
       methods: {
-        mouseMove: this.onMouseMove
+        mouseDown: this.onMouseDown,
+      },
+    }, true);
+    // key listener to catch 'esc' key for coming back from a demo
+    this.keyListener = Ludic.input.newInputListener({
+      binder: this,
+      keyConfig: {
+        'esc.up': ()=>{
+          console.log('on backspace up');
+          this.$manager.popToScreen(this.activeDemo);
+        }
       }
     }, true);
-
-    this.rect = new Path2D();
-    this.rect.rect(0,0,10,10);
 
     // initialize an EntityManager
     this.em = new EntityManager();
 
-    // this.clicker = new GenericSystem({});
+    let buttonsDef = [
+      {
+        screen: Demo1,
+      },
+      {
+        screen: Demo2,
+      },
+    ]
 
     // create a button
-    this.button = new Button(0,0,10,10);
-    // console.log(this.button);
-    // console.log(this.button instanceof Button);
-    // console.log(this.button.implements(Clickable));
-    // console.log(this.button.;
+    this.buttons = buttonsDef.map((def,index)=>{
+      return new DemoButton(1+(4*index),1,def)
+    })
+
   }
 
   update(delta, ctx){
@@ -44,14 +57,34 @@ export default class DemoSelectorScreen extends Screen {
     ctx.clearRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
     ctx.fillRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
 
-    this.camera.update(delta);
+    this.camera.draw(ctx);
+    this.camera.drawAxes(ctx);
 
-    this.button.draw(ctx);
+    this.buttons.forEach((button)=>{
+      button.draw(ctx);
+    })
   }
 
-  onMouseMove(canvasPos, worldPos, event){
-    // console.log(event.region);
+  onMouseDown(pixelPoint,evt){
+    let point = this.camera.getWorldPointFromPixelPoint(pixelPoint)
+    this.buttons.forEach((button)=>{
+      if(Ludic.context.isPointInPath(button.path,point.x,point.y)){
+        console.log('clicked button');
+        this.activeDemo = new button.screen()
+        this.$manager.addScreen(this.activeDemo);
+        this.clickListener.$disable();
+      }
+    })
+  }
+
+  onScreensRemoved(){
+    console.log(this);
+    this.clickListener.$enable();
+  }
+
+  onAddedToManager(manager){
+    // this.screenListener = manager.getNewScreenEventListener(true);
+    // this.screenListener.onScreensRemoved = this.onScreensRemoved.bind(this);
+    manager.addScreenEventListener(this);
   }
 }
-
-let imple

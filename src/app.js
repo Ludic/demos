@@ -2,19 +2,20 @@ import {LudicApp, Camera, Ludic} from 'Ludic'
 import DemoSelectorScreen from 'demos/DemoSelectorScreen'
 import LobbyScreen from 'demos/multiplayer/lobbyScreen'
 import MultiplayerDemoScreen from 'demos/multiplayer/multiplayer'
+import GyroScreen from 'demos/gyro/GyroScreen'
 
 export default class LudicDemosApp extends LudicApp {
   constructor(config){
     super(config);
 
     // this.screenListener = Ludic.screenManager.newListener(true);
-    this.demoSelectorScreen = new DemoSelectorScreen();
-    this.lobbyScreen = new LobbyScreen();
-    this.multiplayerDemoScreen = new MultiplayerDemoScreen();
+    /* this.demoSelectorScreen = new DemoSelectorScreen();
+       this.lobbyScreen = new LobbyScreen();
+       this.multiplayerDemoScreen = new MultiplayerDemoScreen(); */
+    this.GyroScreen = new GyroScreen();
+    
     // add the DemoSelectorScreen to the ScreenManager.
-    /* Ludic.screenManager.addScreen(this.demoSelectorScreen); */
-    Ludic.screenManager.addScreen(this.lobbyScreen);
-    /* Ludic.screenManager.addScreen(this.multiplayerDemoScreen); */
+    Ludic.screenManager.addScreen(this.GyroScreen);
   }
 
   update(delta){

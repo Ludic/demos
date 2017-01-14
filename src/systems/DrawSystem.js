@@ -1,3 +1,4 @@
+import {Ludic} from 'Ludic'
 import {BaseSystem} from 'ein'
 export default class DrawSystem extends BaseSystem {
   constructor(){
@@ -19,8 +20,10 @@ export default class DrawSystem extends BaseSystem {
 
   //Overide
   update(...args){
+    Ludic.context.save();
     this.entities.forEach(entity => {
-      entity.draw();
+      entity.draw(Ludic.context);
     });
+    Ludic.context.restore();
   }
 };

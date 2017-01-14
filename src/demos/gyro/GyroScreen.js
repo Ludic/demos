@@ -7,6 +7,7 @@ import Ball from 'src/entities/ball'
 
 /* Systems */
 import DrawSystem from 'src/systems/DrawSystem'
+import GyroSystem from 'src/systems/GyroSystem'
 
 
 export default class GyroScreen extends Screen {
@@ -18,19 +19,21 @@ export default class GyroScreen extends Screen {
     // initialize an EntityManager
     this.em = new EntityManager();
 
-    /* this.addSystems();
-       this.addEntities(); */
+    this.addSystems();
+    this.addEntities();
   }
 
   addSystems(){
     this.DrawSystem = new DrawSystem();
+    this.GyroSystem = new GyroSystem();
 
     this.em.addSystem(this.DrawSystem);
+    this.em.addSystem(this.GyroSystem);
   }
 
   addEntities(){
     // initialize a Block Entity
-    this.ball = new Ball(0, 0, 100, 100);
+    this.ball = new Ball(50, 50, 50);
     this.em.addEntity(this.ball);
   }
 

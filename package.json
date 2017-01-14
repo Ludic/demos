@@ -4,7 +4,7 @@
   "description": "demos for the ludic game engine",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./webpack.dev.config.js --inline --hot --no-info --colors --progress --port 8080",
+    "dev": "webpack-dev-server --config ./webpack.dev.config.js --inline --hot --no-info --colors --progress --port 8080 --host 192.168.0.19",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

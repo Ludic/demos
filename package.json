@@ -16,6 +16,7 @@
   "dependencies": {
     "ein": "github:ludic/ein",
     "ludic": "github:ludic/ludic",
+    "ludic-vue": "github:ludic/ludic-vue",
     "mixwith": "github:ludic/mixwith",
     "vue": "^2.1.0",
     "vue-router": "^2.1.1"

@@ -1,56 +1,17 @@
-// import {default as Ludic, Camera} from 'ludic'
-// import LudicDemosApp from 'src/app'
-
-//Config Ludic?
-// Ludic.devmode = true;
-
-// var config = {
-//   canvas: {
-//     fullscreen: true
-//   },
-//   camera: {
-//     fps: false,
-//     extras: {
-//       axes: true,
-//       grid: false
-//     },
-//     ptm: 25
-//   },
-//   world: {
-//     gravity: {
-//       x: 0,
-//       y: -10
-//     },
-//     drawDebug: true
-//   },
-//   input: {
-//     logAllKeys:false,
-//     logUnmappedKeys:true,
-//   }
-// };
-
-
-
-
-// var LudicDemos = new LudicDemosApp({
-//   canvas: {
-//     fullscreen: true,
-//   },
-// });
-// LudicDemos.run();
-
-///////////////////////////////////////////////////////////////////////
-
 import Vue from 'vue'
+
+// import vue plugins
+import VueRouter from 'vue-router'
+import LudicVue from 'ludic-vue'
+
 import routes from './routes'
 
-import VueRouter from 'vue-router'
+// import LudicAppContainer from 'components/ludicAppContainer'
 
-import LudicAppContainer from 'components/ludicAppContainer'
-
-Vue.component('ludic-app', LudicAppContainer)
+// Vue.component('ludic-app', LudicAppContainer)
 
 Vue.use(VueRouter)
+Vue.use(LudicVue)
 
 let router = new VueRouter({
   mode: 'history',

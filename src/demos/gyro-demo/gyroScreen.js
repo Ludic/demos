@@ -6,8 +6,8 @@ import {EntityManager} from 'ein'
 import Ball from './entities/ball'
 
 /* Systems */
-import DrawSystem from '.systems/DrawSystem'
-import GyroSystem from '.systems/GyroSystem'
+import DrawSystem from './systems/DrawSystem'
+import GyroSystem from './systems/GyroSystem'
 
 export default class GyroScreen extends Screen {
   constructor() {

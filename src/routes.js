@@ -5,6 +5,8 @@ import DemoRouter from 'demos/demoRouter'
 // demos
 import CameraDemo from 'demos/camera-demo'
 import InputDemo from 'demos/input-demo'
+import GyroDemo from 'demos/gyro-demo'
+import Box2dDemo from 'demos/box2d-demo'
 import ScreenManager from 'demos/screen-manager'
 
 export default [
@@ -34,6 +36,23 @@ export default [
           title: "Camera Demo"
         },
       },
+      {
+        path: 'gyro-demo',
+        name: 'gyro-demo',
+        component: GyroDemo,
+        meta: {
+          title: "Gyro Demo"
+        },
+      },
+      {
+        path: 'box2d-demo',
+        name: 'box2d-demo',
+        component: Box2dDemo,
+        meta: {
+          title: "Box2d Demo"
+        },
+      },
+
       {
         path: 'screen-manager',
         name: 'screen-manager',

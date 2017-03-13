@@ -14,9 +14,9 @@
   "author": "Derek Arner",
   "license": "ISC",
   "dependencies": {
-    "box2d": "github:ludic/box2d",
     "ein": "github:ludic/ein",
     "ludic": "github:ludic/ludic",
+    "ludic-box2d": "github:ludic/ludic-box2d",
     "ludic-vue": "github:ludic/ludic-vue",
     "mixwith": "github:ludic/mixwith",
     "vue": "^2.1.0",
@@ -36,7 +36,7 @@
     "style-loader": "^0.13.1",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.0",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.x"
   }
 }

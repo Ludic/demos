@@ -13,7 +13,15 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  target: 'web',
+  node: {
+    fs: 'empty',
+    net: 'empty',
+  },
   module: {
+    noParse: [
+      /Box2D_v2/,
+    ],
     rules: [
       {
         test: /\.vue$/,
@@ -42,10 +50,11 @@ module.exports = {
               ]
             },
           },
-          {
-            loader: "source-map-loader",
-          },
         ],
+      },
+      {
+        test: /\.js$/,
+        use: ["source-map-loader"],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -66,7 +75,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.scss', '.json'],
     plugins: [
       new DirectoryNamedWebpackPlugin()
-    ]
+    ],
+    // this is to help npm linked packages use project node_modules first
+    // modules: ["node_modules",path.resolve(__dirname, "node_modules")],
   },
   devServer: {
     historyApiFallback: true,
@@ -75,6 +86,9 @@ module.exports = {
   performance: {
     hints: false
   },
+  // externals: {
+  //   box2d: 'box2d'
+  // },
   devtool: '#eval-source-map'
 };
 

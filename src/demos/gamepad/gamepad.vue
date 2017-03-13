@@ -16,8 +16,6 @@ export default {
   },
   methods: {
     onReady(){
-      // install
-
       this.camera = new Camera()
 
       // set a move speed for our box
@@ -38,6 +36,7 @@ export default {
           right: this.onRight,
           up: this.onUp,
           down: this.onDown,
+          leftStick: this.onLeftStick,
         },
         // passing true here also adds the listener to the controller.
         //  saves a call like `Ludic.input.addInputListener(this.inputListener)`
@@ -92,6 +91,18 @@ export default {
           height: 2,
           color: 'blue',
         }
+      }
+    },
+    onLeftStick(x,y){
+      if(x < -0.5){
+        this.onLeft()
+      } else if(x > 0.5){
+        this.onRight()
+      }
+      if(y < -0.5){
+        this.onUp()
+      } else if(y > 0.5){
+        this.onDown()
       }
     },
 

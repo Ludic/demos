@@ -1,5 +1,4 @@
 import {Screen, Camera, Ludic} from 'ludic'
-import * as lud from 'ludic'
 import {EntityManager} from 'ein'
 
 /* Entities */

@@ -1,4 +1,4 @@
-import App from './App.vue'
+import App from './app'
 
 // demo router
 import DemoRouter from 'demos/demoRouter'

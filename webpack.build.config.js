@@ -2,6 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 
 const PORT = process.env.npm_config_port || 8080
@@ -95,7 +96,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
         template: 'index.ejs',
-      }),
+    }),
+    new CopyWebpackPlugin([
+      {from: 'CNAME'}
+    ]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'

@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 var DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 
 const PORT = process.env.npm_config_port || 8080
@@ -11,8 +12,8 @@ const PORT = process.env.npm_config_port || 8080
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, 'dist'),
+    // publicPath: '/',
     filename: 'build.js'
   },
   target: 'web',
@@ -91,16 +92,10 @@ module.exports = {
   performance: {
     hints: false
   },
-  // externals: {
-  //   box2d: 'box2d'
-  // },
-  devtool: 'source-map'
-};
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
+  plugins: [
+    new HtmlWebpackPlugin({
+        template: 'index.ejs',
+      }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -115,9 +110,6 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-  ])
-} else if(process.env.NODE_ENV === 'development'){
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.NamedModulesPlugin()
-  ])
-}
+  ],
+  devtool: '#source-map'
+};

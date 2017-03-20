@@ -1,4 +1,4 @@
-import {Ludic} from 'Ludic'
+import {Ludic} from 'ludic'
 import {BaseSystem} from 'ein'
 export default class DrawSystem extends BaseSystem {
   constructor(){

@@ -73,15 +73,15 @@ module.exports = {
       src: path.resolve(__dirname, 'src/'),
       components: path.resolve(__dirname, 'src/components/'),
       demos: path.resolve(__dirname, 'src/demos/'),
-      'ludic$': path.resolve(__dirname, 'node_modules/ludic/src/main.js'),
-      'Ludic$': 'ludic',
+      // 'ludic$': path.resolve(__dirname, 'node_modules/ludic/src/main.js'),
+      // 'Ludic$': 'ludic',
     },
     extensions: ['.js', '.vue', '.scss', '.json'],
     plugins: [
       new DirectoryNamedWebpackPlugin()
     ],
     // this is to help npm linked packages use project node_modules first
-    modules: ["node_modules",path.resolve(__dirname, "node_modules")],
+    // modules: ["node_modules",path.resolve(__dirname, "node_modules")],
   },
   // devServer: {
   //   historyApiFallback: true,

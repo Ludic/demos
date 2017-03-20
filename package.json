@@ -4,7 +4,7 @@
   "description": "demos for the ludic game engine",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.config.js --inline --hot --no-info --colors --progress --port 8080",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.config.js --inline --hot --no-info --colors --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "ein": "github:ludic/ein",
+    "firebase": "^3.7.2",
     "ludic": "github:ludic/ludic",
     "ludic-box2d": "github:ludic/ludic-box2d",
     "ludic-vue": "github:ludic/ludic-vue",

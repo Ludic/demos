@@ -2,6 +2,8 @@ var path = require('path');
 var fs = require('fs');
 var webpack = require('webpack');
 var DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
+
+const PORT = process.env.npm_config_port || 8080
 /*
 * Ludic-Demos dev config
 */
@@ -83,7 +85,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    port: PORT
   },
   performance: {
     hints: false

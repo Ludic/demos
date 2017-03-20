@@ -9,6 +9,7 @@ import GyroDemo from 'demos/gyro-demo/gyroScreen'
 import ScreenManager from 'demos/screen-manager'
 import GamepadDemo from 'demos/gamepad'
 import Box2dDemo from 'demos/box2d'
+import FirebaseDemo from 'demos/firebase-demo'
 
 export default [
   {
@@ -68,6 +69,14 @@ export default [
         component: GamepadDemo,
         meta: {
           title: "Gamepad Demo"
+        },
+      },
+      {
+        path: 'firebase-demo',
+        name: 'firebase-demo',
+        component: FirebaseDemo,
+        meta: {
+          title: "Firebase Demo"
         },
       },
     ]

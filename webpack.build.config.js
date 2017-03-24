@@ -97,8 +97,12 @@ module.exports = {
     new HtmlWebpackPlugin({
         template: 'index.ejs',
     }),
+    new HtmlWebpackPlugin({
+        template: 'gh-pages/404.ejs',
+        filename: '404.html',
+    }),
     new CopyWebpackPlugin([
-      {from: 'CNAME'}
+      {from: 'gh-pages/CNAME'}
     ]),
     new webpack.DefinePlugin({
       'process.env': {

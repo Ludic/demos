@@ -45,7 +45,12 @@ module.exports = {
             loader: "babel-loader",
             options: {
               presets: [
-                ["es2015",{modules: false}],
+                ["env",{
+                  modules: false,
+                  "exclude": [
+                    "transform-es2015-classes"
+                  ]
+                }],
                 "stage-1",
               ]
             },

@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 
 module.exports = {
@@ -91,6 +92,7 @@ module.exports = {
     hints: false
   },
   plugins: [
+    new CaseSensitivePathsPlugin()
   ],
   devtool: '#source-map'
 }

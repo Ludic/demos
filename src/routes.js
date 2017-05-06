@@ -5,11 +5,12 @@ import DemoRouter from 'demos/demoRouter'
 // demos
 import CameraDemo from 'demos/camera-demo'
 import InputDemo from 'demos/input-demo'
-// import GyroDemo from 'demos/gyro-demo/gyroScreen'
+
 import ScreenManager from 'demos/screen-manager'
 import GamepadDemo from 'demos/gamepad'
 import Box2dDemo from 'demos/box2d'
 import FirebaseDemo from 'demos/firebase-demo'
+import GyroDemo from 'demos/gyro-demo/gyro'
 
 // games
 // import GamesRouter from 'games/gamesRouter'
@@ -42,14 +43,14 @@ export default [
           title: "Camera Demo"
         },
       },
-      // {
-      //   path: 'gyro-demo',
-      //   name: 'gyro-demo',
-      //   component: GyroDemo,
-      //   meta: {
-      //     title: "Gyro Demo"
-      //   },
-      // },
+      {
+        path: 'gyro-demo',
+        name: 'gyro-demo',
+        component: GyroDemo,
+        meta: {
+          title: "Gyro Demo"
+        },
+      },
       {
         path: 'box2d-demo',
         name: 'box2d-demo',

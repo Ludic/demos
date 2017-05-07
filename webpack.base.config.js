@@ -46,7 +46,7 @@ module.exports = {
             loader: "babel-loader",
             options: {
               presets: [
-                ["env",{
+                [require.resolve('babel-preset-env'),{
                   modules: false,
                   "exclude": [
                     "transform-es2015-classes"
@@ -86,7 +86,11 @@ module.exports = {
       new DirectoryNamedWebpackPlugin()
     ],
     // this is to help npm linked packages use project node_modules first
-    modules: ["node_modules",path.resolve(__dirname, "node_modules")],
+    modules: [path.resolve(__dirname, "node_modules"), "node_modules"],
+  },
+  resolveLoader: {
+    // this is to help npm linked packages use project node_modules first
+    modules: [path.resolve(__dirname, "node_modules"), "node_modules"],
   },
   performance: {
     hints: false

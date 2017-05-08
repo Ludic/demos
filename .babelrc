@@ -1,0 +1,14 @@
+{
+  "presets": [
+    ["env",
+      {
+        "modules": false,
+        "exclude": [
+          "transform-es2015-classes"
+        ]
+      }
+    ],
+    "stage-1"
+  ],
+  "comments": false
+}

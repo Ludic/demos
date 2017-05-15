@@ -24,7 +24,7 @@ module.exports = merge(base, {
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-        template: 'index.ejs',
+        template: 'index.html',
     }),
     new webpack.NamedModulesPlugin(),
   ],

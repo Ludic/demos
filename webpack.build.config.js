@@ -15,7 +15,7 @@ const PORT = process.env.npm_config_port || 8080
 module.exports = merge(base, {
   plugins: [
     new HtmlWebpackPlugin({
-        template: 'index.ejs',
+        template: 'index.html',
     }),
     new HtmlWebpackPlugin({
         template: 'gh-pages/404.ejs',

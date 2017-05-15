@@ -4,6 +4,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LudicVue from 'ludic-vue'
 
+import App from './app'
 import routes from './routes'
 
 import * as firebase from 'firebase/app'
@@ -32,5 +33,7 @@ let router = new VueRouter({
 
 const app = new Vue({
   el: '#app',
-  router
+  router,
+  template: '<App/>',
+  components: { App }
 })

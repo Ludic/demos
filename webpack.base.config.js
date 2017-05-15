@@ -6,6 +6,9 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DirectoryNamedWebpackPlugin = require("directory-named-webpack-plugin");
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
 
 module.exports = {
   entry: './src/main.js',
@@ -21,7 +24,7 @@ module.exports = {
   },
   module: {
     noParse: [
-      /Box2D_v2/,
+      /Box2D_v2/, // needed for ludic-box2d
     ],
     rules: [
       {
@@ -40,12 +43,12 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
+        loader: 'babel-loader',
+        include: [
+          resolve('src'),
+          resolve('test'),
+          /\/node_modules\/ludic/,
+        ]
       },
       {
         test: /\.js$/,

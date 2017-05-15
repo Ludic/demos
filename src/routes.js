@@ -1,4 +1,4 @@
-import App from './app'
+import Home from './home'
 
 // demo router
 import DemoRouter from 'demos/demoRouter'
@@ -20,7 +20,7 @@ export default [
   {
     path: '/',
     name: 'index',
-    component: App,
+    component: Home,
   },
   {
     path: '/demos',

@@ -4,7 +4,7 @@
   "description": "demos for the ludic game engine",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.config.js --inline --hot --no-info --colors --progress",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.config.js --inline --hot --colors --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.build.config.js --colors --progress"
   },

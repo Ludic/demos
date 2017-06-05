@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="input-demo">
-    <ludic-app :update="update" @app-ready="onReady"></ludic-app>
+    <canvas id="simple-init-canvas" width="600" height="338"></canvas>
     <div class="">
       <p>Click the canvas to create a box at that location.</p>
       <p>Use the arrow keys to move it around the screen.</p>
@@ -10,33 +10,40 @@
 
 <script>
 import {app, Camera} from 'ludic'
+import * as Ludic from 'ludic'
 export default {
   beforeDestroy(){
     app.input.removeInputListener(this.inputListener)
   },
+  mounted(){
+    // initialize a ludic app
+    this.app = app({
+      el: '#simple-init-canvas'
+    })
+    this.app.run(this.update)
+
+    this.camera = new Camera()
+
+    // set a move speed for our box
+    this.moveSpeed = 1
+
+    this.inputListener = app.input.newInputListener({
+      binder: this,
+      keyConfig: {
+        // we use `.down` to tell the input controller to only send the keydown event
+        'up.down': this.onUp,
+        'down.down': this.onDown,
+        'left.down': this.onLeft,
+        'right.down': this.onRight,
+      },
+      methods: {
+        mouseUp: this.onMouseUp,
+      },
+      // passing true here also adds the listener to the controller.
+      //  saves a call like `app.input.addInputListener(this.inputListener)`
+    }, true)
+  },
   methods: {
-    onReady(){
-      this.camera = new Camera()
-
-      // set a move speed for our box
-      this.moveSpeed = 1
-
-      this.inputListener = app.input.newInputListener({
-        binder: this,
-        keyConfig: {
-          // we use `.down` to tell the input controller to only send the keydown event
-          'up.down': this.onUp,
-          'down.down': this.onDown,
-          'left.down': this.onLeft,
-          'right.down': this.onRight,
-        },
-        methods: {
-          mouseUp: this.onMouseUp,
-        },
-        // passing true here also adds the listener to the controller.
-        //  saves a call like `app.input.addInputListener(this.inputListener)`
-      }, true)
-    },
 
     update(delta, time){
       let ctx = app.context

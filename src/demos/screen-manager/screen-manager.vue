@@ -9,18 +9,18 @@
 </template>
 
 <script>
-import {ScreenManager, Camera, Ludic} from 'ludic'
+import {ScreenManager, Screen, Camera, app} from 'ludic'
 import ColorScreen from './colorScreen'
 export default {
   beforeDestroy(){
-    Ludic.input.removeInputListener(this.inputListener)
+    app.input.removeInputListener(this.inputListener)
   },
   methods: {
     onReady(){
       this.camera =  new Camera()
       this.screenManager = new ScreenManager()
 
-      this.inputListener = Ludic.input.newInputListener({
+      this.inputListener = app.input.newInputListener({
         binder: this,
         keyConfig: {
           'esc.up': this.onEscUp,
@@ -30,10 +30,10 @@ export default {
     },
 
     update(delta,time){
-      let ctx = Ludic.context
+      let ctx = app.context
       ctx.fillStyle = 'white'
-      ctx.clearRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height())
-      ctx.fillRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height())
+      ctx.clearRect(0, 0, app.canvas.width(), app.canvas.height())
+      ctx.fillRect(0, 0, app.canvas.width(), app.canvas.height())
 
       // this.camera.draw(ctx)
       this.screenManager.update(delta,ctx)

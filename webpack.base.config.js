@@ -10,11 +10,15 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
+function nodeModule(name) {
+  return fs.realpathSync(__dirname + '/node_modules/' + name)
+}
+
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    // publicPath: '/',
+    path: resolve('dist'),
+    publicPath: '/',
     filename: 'build.js'
   },
   target: 'web',
@@ -44,10 +48,18 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        // exclude: excludeBut('ludic', 'ludic-box2d', 'ludic-vue'),
+        // exclude: /node_modules\/(?![ludic|ludic-box2d|ludic-vue])/,
         include: [
+          nodeModule('ludic/src'),
+          nodeModule('ludic-box2d/src'),
+          nodeModule('ludic-vue/src'),
           resolve('src'),
           resolve('test'),
-          /\/node_modules\/ludic/,
+
+          // /\/node_modules\/ludic\//,
+          // /\/node_modules\/ludic-box2d\//,
+          // /\/node_modules\/ludic-vue\//,
         ]
       },
       {

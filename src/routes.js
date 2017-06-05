@@ -1,16 +1,6 @@
 import Home from './home'
 
-// demo router
-import DemoRouter from 'demos/demoRouter'
-// demos
-import CameraDemo from 'demos/camera-demo'
-import InputDemo from 'demos/input-demo'
-
-import ScreenManager from 'demos/screen-manager'
-import GamepadDemo from 'demos/gamepad'
-import Box2dDemo from 'demos/box2d'
-import FirebaseDemo from 'demos/firebase-demo'
-import GyroDemo from 'demos/gyro-demo/gyro'
+import * as demos from 'demos'
 
 // games
 // import GamesRouter from 'games/gamesRouter'
@@ -25,28 +15,36 @@ export default [
   {
     path: '/demos',
     name: 'demos',
-    component: DemoRouter,
+    component: demos.DemoRouter,
     children: [
+      {
+        path: 'simple-init-demo',
+        name: 'simple-init-demo',
+        component: demos.SimpleInitDemo,
+        meta: {
+          title: "Simple Initialization Demo"
+        },
+      },
       {
         path: 'input-demo',
         name: 'input-demo',
-        component: InputDemo,
+        component: demos.InputDemo,
         meta: {
           title: "Input Demo"
         },
       },
-      {
-        path: 'camera-demo',
-        name: 'camera-demo',
-        component: CameraDemo,
-        meta: {
-          title: "Camera Demo"
-        },
-      },
+      // {
+      //   path: 'camera-demo',
+      //   name: 'camera-demo',
+      //   component: demos.CameraDemo,
+      //   meta: {
+      //     title: "Camera Demo"
+      //   },
+      // },
       {
         path: 'gyro-demo',
         name: 'gyro-demo',
-        component: GyroDemo,
+        component: demos.GyroDemo,
         meta: {
           title: "Gyro Demo"
         },
@@ -54,7 +52,7 @@ export default [
       {
         path: 'box2d-demo',
         name: 'box2d-demo',
-        component: Box2dDemo,
+        component: demos.Box2dDemo,
         meta: {
           title: "Box2d Demo"
         },
@@ -63,7 +61,7 @@ export default [
       {
         path: 'screen-manager',
         name: 'screen-manager',
-        component: ScreenManager,
+        component: demos.ScreenManager,
         meta: {
           title: "Screen Manager"
         },
@@ -71,7 +69,7 @@ export default [
       {
         path: 'gamepad-demo',
         name: 'gamepad-demo',
-        component: GamepadDemo,
+        component: demos.GamepadDemo,
         meta: {
           title: "Gamepad Demo"
         },
@@ -79,7 +77,7 @@ export default [
       {
         path: 'firebase-demo',
         name: 'firebase-demo',
-        component: FirebaseDemo,
+        component: demos.FirebaseDemo,
         meta: {
           title: "Firebase Demo"
         },

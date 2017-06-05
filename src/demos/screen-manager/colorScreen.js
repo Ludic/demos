@@ -1,4 +1,4 @@
-import {Screen, Ludic} from 'ludic'
+import {Screen, app} from 'ludic'
 
 export default class ColorScreen extends Screen {
   constructor(color) {
@@ -10,7 +10,7 @@ export default class ColorScreen extends Screen {
   update(delta, ctx){
     ctx.save();
     ctx.fillStyle = this.color;
-    ctx.fillRect(0,0,Ludic.canvas.width(),Ludic.canvas.height());
+    ctx.fillRect(0,0,app.canvas.width(),app.canvas.height());
     ctx.restore();
   }
 

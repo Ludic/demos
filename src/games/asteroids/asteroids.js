@@ -1,4 +1,4 @@
-import {Ludic, LudicApp, Camera} from 'ludic'
+import {app, LudicApp, Camera} from 'ludic'
 import {Engine} from 'ein'
 // import Ship from './entities/ship'
 
@@ -11,7 +11,7 @@ export default class Asteroids extends LudicApp {
     this.camera.centerWorldToCamera()
 
     // create an update function that has context passed into it
-    this.update = this.update.bind(this,Ludic.context)
+    this.update = this.update.bind(this,app.context)
 
 
     // ein
@@ -21,7 +21,7 @@ export default class Asteroids extends LudicApp {
   }
 
   update(ctx, delta, time){
-    Ludic.canvas.clear('black', ctx)
+    app.canvas.clear('black', ctx)
 
     this.camera.draw(ctx)
     this.camera.drawAxes(ctx)

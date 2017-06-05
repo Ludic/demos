@@ -1,4 +1,4 @@
-import {Screen, ScreenManager, Camera, Ludic} from 'ludic'
+import {Screen, ScreenManager, Camera, app} from 'ludic'
 import {EntityManager, BaseSystem} from 'ein'
 import DemoButton from 'src/components/demoButton'
 
@@ -16,14 +16,14 @@ export default class DemoSelectorScreen extends Screen {
 
     // create an input listener. passing `true` automatically adds
     //  the listener to the controller.
-    this.clickListener = Ludic.input.newInputListener({
+    this.clickListener = app.input.newInputListener({
       binder: this,
       methods: {
         mouseDown: this.onMouseDown,
       },
     }, true);
     // key listener to catch 'esc' key for coming back from a demo
-    this.keyListener = Ludic.input.newInputListener({
+    this.keyListener = app.input.newInputListener({
       binder: this,
       keyConfig: {
         'esc.up': ()=>{
@@ -54,8 +54,8 @@ export default class DemoSelectorScreen extends Screen {
 
   update(delta, ctx){
     ctx.fillStyle = 'white';
-    ctx.clearRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
-    ctx.fillRect(0, 0, Ludic.canvas.width(), Ludic.canvas.height());
+    ctx.clearRect(0, 0, app.canvas.width(), app.canvas.height());
+    ctx.fillRect(0, 0, app.canvas.width(), app.canvas.height());
 
     this.camera.draw(ctx);
     this.camera.drawAxes(ctx);
@@ -68,7 +68,7 @@ export default class DemoSelectorScreen extends Screen {
   onMouseDown(pixelPoint,evt){
     let point = this.camera.getWorldPointFromPixelPoint(pixelPoint)
     this.buttons.forEach((button)=>{
-      if(Ludic.context.isPointInPath(button.path,point.x,point.y)){
+      if(app.context.isPointInPath(button.path,point.x,point.y)){
         console.log('clicked button');
         this.activeDemo = new button.screen()
         this.$manager.addScreen(this.activeDemo);

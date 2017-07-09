@@ -33,6 +33,14 @@ export default [
           title: "Input Demo"
         },
       },
+      {
+        path: 'ein-demo',
+        name: 'ein-demo',
+        component: demos.EinDemo,
+        meta: {
+          title: "Ein Demo"
+        },
+      },
       // {
       //   path: 'camera-demo',
       //   name: 'camera-demo',

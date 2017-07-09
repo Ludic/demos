@@ -3,6 +3,7 @@ export {default as DemoRouter} from './demoRouter'
 // demos
 export {default as CameraDemo} from './camera-demo'
 export {default as InputDemo} from './input-demo'
+export {default as EinDemo} from './ein'
 
 export {default as ScreenManager} from './screen-manager'
 export {default as GamepadDemo} from './gamepad'

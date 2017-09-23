@@ -41,6 +41,14 @@ export default [
           title: "Ein Demo"
         },
       },
+      {
+        path: 'ui-demo',
+        name: 'ui-demo',
+        component: demos.UIDemo,
+        meta: {
+          title: "UI Demo"
+        },
+      },
       // {
       //   path: 'camera-demo',
       //   name: 'camera-demo',

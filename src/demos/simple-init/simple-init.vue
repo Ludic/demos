@@ -10,19 +10,18 @@
 
 <script>
 import {app, Camera} from 'ludic'
-import * as Ludic from 'ludic'
+import Ludic from 'ludic'
 export default {
   beforeDestroy(){
     app.input.removeInputListener(this.inputListener)
   },
   mounted(){
     // initialize a ludic app
-    this.app = app({
+    this.app = Ludic({
       el: '#simple-init-canvas'
     })
     this.app.run(this.update)
-
-    this.camera = new Camera()
+    this.camera = new Camera(Ludic.canvas)
 
     // set a move speed for our box
     this.moveSpeed = 1

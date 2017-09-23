@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     onReady(){
-      this.camera = new Camera()
+      this.camera = new Camera(app.canvas)
 
       // set a move speed for our box
       this.moveSpeed = 1

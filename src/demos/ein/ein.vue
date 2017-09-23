@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     onReady(){
-      this.camera = new Camera()
+      this.camera = new Camera(app.canvas)
       this.world = new World(0,-9.8)
       this.debugDraw = DebugDraw.newDebugger(app.canvas)
       this.world.SetDebugDraw(this.debugDraw)

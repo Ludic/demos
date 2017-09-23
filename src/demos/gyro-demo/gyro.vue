@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     onReady(){
-      
-      this.camera = new Camera()
+
+      this.camera = new Camera(app.canvas)
       this.world = new World(0,-20.0)
       this.debugDraw = DebugDraw.newDebugger(app.canvas)
       this.world.SetDebugDraw(this.debugDraw)
@@ -58,7 +58,7 @@ export default {
       ctx.save()
       this.ball.draw(ctx)
       ctx.restore()
-      
+
 
       // draw the platform
       ctx.save()

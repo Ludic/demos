@@ -10,7 +10,7 @@ export default class DemoSelectorScreen extends Screen {
   constructor() {
     super();
 
-    this.camera = new Camera();
+    this.camera = new Camera(app.canvas);
     this.camera.inverseY = false;
     // this.camera.centerWorldToCamera();
 

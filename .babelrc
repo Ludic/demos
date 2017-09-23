@@ -2,10 +2,18 @@
   "presets": [
     ["env", {
       "modules": false,
-      "exclude": ["transform-es2015-classes"]
+      "exclude": ["transform-es2015-classes"],
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
       }
-    ],
-    "stage-1"
+    }],
+    "stage-2"
   ],
-  "comments": false
+  "plugins": ["transform-runtime", "transform-object-rest-spread"],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"],
+      "plugins": ["istanbul"]
+    }
+  }
 }

@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     onReady(){
-      this.camera =  new Camera()
+      this.camera =  new Camera(app.canvas)
       this.screenManager = new ScreenManager()
 
       this.inputListener = app.input.newInputListener({

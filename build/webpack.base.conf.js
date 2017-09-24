@@ -68,9 +68,6 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [
-          nodeModule('ludic/src'),
-          nodeModule('ludic-box2d/src'),
-          nodeModule('ludic-vue/src'),
           resolve('src'),
           resolve('test')
         ],

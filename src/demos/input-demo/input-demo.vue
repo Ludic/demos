@@ -9,19 +9,20 @@
 </template>
 
 <script>
-import {app, Camera} from 'ludic'
+import {Camera} from 'ludic'
 export default {
   beforeDestroy(){
-    app.input.removeInputListener(this.inputListener)
+    this.app.$input.removeInputListener(this.inputListener)
   },
   methods: {
-    onReady(){
-      this.camera = new Camera(app.canvas)
+    onReady(app){
+      this.app = app
+      this.camera = new Camera(app.$canvas)
 
       // set a move speed for our box
       this.moveSpeed = 1
 
-      this.inputListener = app.input.newInputListener({
+      this.inputListener = app.$input.newInputListener({
         binder: this,
         keyConfig: {
           // we use `.down` to tell the input controller to only send the keydown event
@@ -39,8 +40,8 @@ export default {
     },
 
     update(delta, time){
-      let ctx = app.context
-      app.canvas.clear()
+      let ctx = this.app.$context
+      this.app.$canvas.clear()
 
       this.camera.draw(ctx)
 

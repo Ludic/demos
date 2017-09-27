@@ -2,7 +2,6 @@
   "presets": [
     ["env", {
       "modules": false,
-      "exclude": ["transform-es2015-classes"],
       "targets": {
         "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
       }

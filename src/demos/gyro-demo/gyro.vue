@@ -10,21 +10,21 @@
 </template>
 
 <script>
-import {app, Camera} from 'ludic'
+import {Camera} from 'ludic'
 import {World, DebugDraw, Box2D} from 'ludic-box2d'
 import Block from './block'
 import Ball from './ball'
 
 export default {
   beforeDestroy(){
-    app.input.removeInputListener(this.inputListener)
+    this.app.$input.removeInputListener(this.inputListener)
   },
   methods: {
-    onReady(){
-
-      this.camera = new Camera(app.canvas)
+    onReady(app){
+      this.app = app
+      this.camera = new Camera(this.app.$canvas)
       this.world = new World(0,-20.0)
-      this.debugDraw = DebugDraw.newDebugger(app.canvas)
+      this.debugDraw = DebugDraw.newDebugger(this.app.$canvas)
       this.world.SetDebugDraw(this.debugDraw)
 
       // setup world boundaries
@@ -46,8 +46,8 @@ export default {
     },
 
     update(delta, time){
-      let ctx = app.context
-      app.canvas.clear()
+      let ctx = this.app.$context
+      this.app.$canvas.clear()
 
       this.world.step(delta)
       this.camera.draw(ctx)

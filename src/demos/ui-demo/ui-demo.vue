@@ -9,20 +9,21 @@
 </template>
 
 <script>
-import {app as $app, Camera} from 'ludic'
+import {Camera} from 'ludic'
 import {World, DebugDraw} from 'ludic-box2d'
 import {UIText} from 'ludic-vue' // TODO: make this ludic-ui
 import Block from './block'
 
 export default {
   beforeDestroy(){
-    $app.input.removeInputListener(this.inputListener)
+    this.app.$input.removeInputListener(this.inputListener)
   },
   methods: {
-    onReady(){
-      this.camera = new Camera($app.canvas)
+    onReady(app){
+      this.app = app
+      this.camera = new Camera(this.app.$canvas)
       this.world = new World(0,-9.8)
-      this.debugDraw = DebugDraw.newDebugger($app.canvas)
+      this.debugDraw = DebugDraw.newDebugger(this.app.$canvas)
       this.world.SetDebugDraw(this.debugDraw)
 
       this.boxColor = 'blue'
@@ -34,7 +35,7 @@ export default {
       // set a move speed for our box
       this.moveSpeed = 1
 
-      this.inputListener = $app.input.newInputListener({
+      this.inputListener = this.app.$input.newInputListener({
         binder: this,
         keyConfig: {
           // we use `.down` to tell the input controller to only send the keydown event
@@ -50,19 +51,15 @@ export default {
           mouseLeave: this.onMouseLeave,
         },
         // passing true here also adds the listener to the controller.
-        //  saves a call like `$app.input.addInputListener(this.inputListener)`
+        //  saves a call like `this.app.$input.addInputListener(this.inputListener)`
       }, true)
 
       this.text = new UIText('Click here to drop a box')
-      // $app.$ui.named.text = this.text
-      // $app.$ui.set('text', this.text)
-      // $app.$ui.children.push(this.text)
-      // console.log($app.$ui.$vm)
     },
 
     update(delta, time){
-      let ctx = $app.context
-      $app.canvas.clear()
+      let ctx = this.app.$context
+      this.app.$canvas.clear()
 
       this.world.step(delta)
       this.camera.draw(ctx)
@@ -117,17 +114,14 @@ export default {
     },
 
     onMouseEnter(...args){
-      // $app.$ui.set('text', this.text)
-      $app.$ui.named.text = this.text
+      this.app.$ui.named.text = this.text
     },
     onMouseMove({x,y}){
       this.text.x = x
       this.text.y = y
     },
     onMouseLeave(...args){
-      console.log('leave', args)
-      // $app.$ui.set('text', null)
-      $app.$ui.named.text = null
+      this.app.$ui.named.text = null
     },
 
     // drawing methods
